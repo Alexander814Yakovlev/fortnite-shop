@@ -6,7 +6,7 @@ function Header(props) {
   return (
     <nav className="main__color-theme fixed-nav">
       <div className="nav-wrapper">
-        <a href="/" className="brand-logo">
+        <a href="/fortnite-shop" className="brand-logo">
           <img src={logo} alt="F" className="logo" />
           <div className="title">Магазин Fortnite</div>
         </a>
