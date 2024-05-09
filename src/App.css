@@ -1,38 +1,176 @@
 .App {
-  text-align: center;
+  background: url('https://media.fortniteapi.io/images/map.png') center center fixed;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.overlay {
+  filter: blur(4px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main__color-theme {
+  background: linear-gradient(175deg, #fff 0%, #327ff3 100%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.fixed-nav {
+  position: fixed;
+  z-index: 2;
+}
+
+nav .brand-logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  display: block;
+  height: 50px;
+  margin: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart__quantity {
+  position: absolute;
+  top: 13px;
+  right: -6px;
+  height: 18px;
+  width: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #0867f7;
+  transform: rotateX(360deg);
+  perspective: 5px;
+  transition: transform 1.5s;
+  transform-style: preserve-3d;
+}
+
+.content {
+  padding: calc(1.5rem + 64px) 0 1.5rem;
+  min-height: calc(100vh - 50px - 64px);
+}
+
+.page-footer {
+  padding: 0 10px;
+}
+
+@keyframes show-modal {
+  0% {
+    top: -50%
   }
-  to {
-    transform: rotate(360deg);
+
+  80% {
+    top: 55%;
+  }
+
+  100% {
+    top: 50%
+  }
+}
+
+.cart__modal {
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  width: 60rem;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: scroll;
+  text-align: center;
+  box-shadow: 2px 2px 7px #327ff3;
+  animation: show-modal ease-in-out 1 0.6s;
+}
+
+.cart__modal_header {
+  margin: 0;
+  padding: 10px 0;
+  background: linear-gradient(175deg, #fff 0%, #327ff3 100%);
+}
+
+.close-btn {
+  margin-right: 10px;
+  cursor: pointer;
+  color: #4b0000;
+}
+
+.cart__item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 2fr));
+  gap: 5px;
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px 10px;
+  font-size: 1rem;
+  line-height: 1rem;
+  border-bottom: 1px solid #327ff3;
+}
+
+.cart__item .v-bucks {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.quantity-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.cart__price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.remove__order {
+  background-color: transparent;
+  border: none;
+  color: #e02828;
+  cursor: pointer;
+}
+
+button:active {
+  transform: translate(1px, 1px) !important
+}
+
+button:focus {
+  background-color: unset;
+}
+
+.cart__bottom {
+  padding: 0 10px;
+}
+
+.total {
+  padding: 10px;
+}
+
+#toast-container {
+  top: 7% !important;
+}
+
+
+@media screen and (max-width: 992px) {
+  nav .brand-logo {
+    left: 0;
+    transform: translateX(0);
+    font-size: 1.5em;
+  }
+
+  .logo {
+    height: 40px;
   }
 }
