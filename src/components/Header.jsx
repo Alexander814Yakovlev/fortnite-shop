@@ -15,7 +15,7 @@ function Header(props) {
             <Cart quantity={order.length} toggleCart={toggleCart}/>
           </li>
           <li>
-            <a href="#!">
+            <a href="https://github.com/Alexander814Yakovlev/fortnite-shop" target="blank_">
               <i className="material-icons">code</i>
             </a>
           </li>
