@@ -1,14 +1,16 @@
 import ItemCard from "./ItemCard";
+import React, { useContext } from "react";
+import { ShopContext } from "../context";
 
-function ItemsList(props) {
-  const { items, addOrder } = props;
-  if (!items.length) {
+function ItemsList() {
+  const { shop, addOrder } = useContext(ShopContext);
+  if (!shop.length) {
     return <h3>Nothing here</h3>;
   }
 
   return (
     <div className="items">
-      {items.map((item, id) => (
+      {shop.map((item, id) => (
         <ItemCard
           key={id}
           title={item.displayName}

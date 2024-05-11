@@ -85,13 +85,17 @@ nav .brand-logo {
   width: 60rem;
   max-width: 90%;
   max-height: 80vh;
-  overflow-y: scroll;
   text-align: center;
   box-shadow: 2px 2px 7px #327ff3;
   animation: show-modal ease-in-out 1 0.6s;
 }
 
+.cart__modal>ul {
+  overflow-y: scroll;
+}
+
 .cart__modal_header {
+  border-radius: 8px 8px 0 0;
   margin: 0;
   padding: 10px 0;
   background: linear-gradient(175deg, #fff 0%, #327ff3 100%);

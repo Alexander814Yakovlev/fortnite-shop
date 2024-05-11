@@ -1,15 +1,15 @@
 import { API_KEY, API_URL } from "../config";
-import { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { ShopContext } from "../context";
 import ItemsList from "./ItemsList";
 import Preloader from "./Preloader";
 import Alert from "./Alert";
 
-function Shop(props) {
-  const { order, addOrder, showCart, closeAlert, alertName } = props;
-  const [shop, setShop] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+function Shop() {
+  const { order, showCart, alertName, setItems, isLoading } =
+    useContext(ShopContext);
 
-  function getItems() {
+  useEffect(() => {
     const options = {
       method: "GET",
       headers: {
@@ -19,29 +19,19 @@ function Shop(props) {
     fetch(API_URL, options)
       .then((response) => response.json())
       .then((data) => {
-        setShop(data.shop);
-        setLoading(false);
+        setItems(data.shop);
       });
-  }
+    // eslint-disable-next-line
+  }, []);
 
-  useEffect(() => getItems(), []);
+  useEffect(() => {
+    localStorage.fortniteStore = JSON.stringify(order);
+  }, [order]);
 
   return (
     <main className={`container content ${showCart ? "overlay" : ""}`}>
-      <div className="row">
-        {!isLoading ? (
-          <ItemsList
-            items={shop}
-            order={order}
-            addOrder={addOrder}
-            alertName={alertName}
-            closeAlert={closeAlert}
-          />
-        ) : (
-          <Preloader />
-        )}
-      </div>
-      {alertName && <Alert title={alertName} closeAlert={closeAlert} />}
+      <div className="row">{!isLoading ? <ItemsList /> : <Preloader />}</div>
+      {alertName && <Alert />}
     </main>
   );
 }
